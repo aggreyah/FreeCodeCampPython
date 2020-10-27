@@ -31,26 +31,16 @@ def arithmetic_arranger(problems, evaluate = None):
         underline_string *= (len(longest_operand) + 2)
         dashes_list.append(f"{underline_string}")
 
-    arranged_problems += add_formatted_operands(first_operands, len(problems))
+    arranged_problems += add_formatted_operands(first_operands, len(problems)) + f"\n"
 
-    arranged_problems += add_formatted_operands(second_operands, len(problems))
+    arranged_problems += add_formatted_operands(second_operands, len(problems)) + f"\n"
 
-    arranged_problems += add_formatted_dashes(dashes_list, len(problems))
+    arranged_problems += add_formatted_operands(dashes_list, len(problems))
 
     if evaluate:
         arranged_problems += f"\n"
-        arranged_problems += add_formatted_dashes(results, len(problems))
+        arranged_problems += add_formatted_operands(results, len(problems))
     return arranged_problems
-
-
-def add_formatted_dashes(dashes, num):
-    formatted_dashes = ""
-    for i in range(num):
-        if i < num - 1:
-            formatted_dashes += dashes[i] + "    "
-        else:
-            formatted_dashes += f"{dashes[i]}"
-    return formatted_dashes
 
 
 def add_formatted_operands(operand_list, size):
@@ -59,7 +49,7 @@ def add_formatted_operands(operand_list, size):
         if i < size - 1:
             formatted_operands += operand_list[i] + "    "
         else:
-            formatted_operands += f"{operand_list[i]}\n"
+            formatted_operands += f"{operand_list[i]}"
     return formatted_operands
 
 
