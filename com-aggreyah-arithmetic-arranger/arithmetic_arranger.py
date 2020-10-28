@@ -1,4 +1,4 @@
-def arithmetic_arranger(problems, evaluate = None):
+def arithmetic_arranger(problems, evaluate=None):
     # problems are a string list with basic math problems.
     if len(problems) > 5:
         return "Error: Too many problems."
