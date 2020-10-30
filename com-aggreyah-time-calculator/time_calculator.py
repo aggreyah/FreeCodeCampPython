@@ -32,12 +32,24 @@ def simple_subtract_time(start, end):
     end_time_minute = end_time[1]
     start_time_hour = start_time[0]
     start_time_minute = start_time[1]
+    if end_time_hour[0] == "0":
+        end_time_hour = end_time_hour[1]
+    elif end_time_minute[0] == "0":
+        end_time_minute = end_time_minute[1]
+    if start_time_hour[0] == "0":
+        start_time_hour = start_time_hour[1]
+    elif start_time_minute[0] == "0":
+        start_time_minute = start_time_minute[1]
+
+    end_time_hour = f"{eval(end_time_hour) + 12}" if start_time_hour == "12" else end_time_hour
     if eval(end_time_minute) < eval(start_time_minute):
-        resulting_time_minute = str((eval(end_time_minute) + eval("60")) - eval(start_time_minute))
         resulting_time_hour = str((eval(end_time_hour) - 1) - eval(start_time_hour))
+        resulting_time_minute = str((eval(end_time_minute) + eval("60")) - eval(start_time_minute))
     else:
-        resulting_time_minute = str(eval(start_time_minute) - eval(end_time_minute))
-        resulting_time_hour = str(eval(start_time_hour) - eval(end_time_hour))
+        resulting_time_minute = str(eval(end_time_minute) - eval(start_time_minute))
+        resulting_time_hour = str(eval(end_time_hour) - eval(start_time_hour))
+    resulting_time_hour = f"0{resulting_time_hour}" if len(resulting_time_hour) < 2 else resulting_time_hour
+    resulting_time_minute = f"0{resulting_time_minute}" if len(resulting_time_minute) < 2 else resulting_time_minute
     return f"{resulting_time_hour}:{resulting_time_minute}"
 
 
@@ -50,4 +62,4 @@ def add_hours_minutes(time, duration_to_add):
 
 
 if __name__ == "__main__":
-    print(simple_subtract_time("10:50", "11:40"))
+    print(simple_subtract_time("12:59", "11:00"))
