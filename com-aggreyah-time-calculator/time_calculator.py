@@ -117,7 +117,7 @@ def simple_subtract_time(start, end):
 
     if int(end_time_minute) < int(start_time_minute):
         resulting_time_hour = str((int(end_time_hour) - 1) - int(start_time_hour))
-        resulting_time_minute = str((eval(end_time_minute) + eval("60")) - eval(start_time_minute))
+        resulting_time_minute = str((eval(end_time_minute) + MINUTES_IN_HOUR) - eval(start_time_minute))
     else:
         resulting_time_minute = str(int(end_time_minute) - int(start_time_minute))
         resulting_time_hour = str(int(end_time_hour) - int(start_time_hour))
@@ -136,7 +136,7 @@ def process_start_and_end_times(stop, begin):
     start_time_hour = start_time[0]
     start_time_minute = start_time[1]
 
-    end_time_hour = f"{eval(end_time_hour) + 12}" if start_time_hour == "12" else end_time_hour
+    end_time_hour = f"{eval(end_time_hour) + TIME_PERIOD_LENGTH}" if start_time_hour == "12" else end_time_hour
     return end_time_hour, end_time_minute, start_time_hour, start_time_minute
 
 
