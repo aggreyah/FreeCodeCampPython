@@ -1,12 +1,11 @@
+TRANSITION_TIME = "11:59"
+HOURS_IN_DAY = 24
 NEXT_DAY = "next day"
 TIME_PERIOD_LENGTH = 12
 MINUTES_IN_HOUR = 60
 DAYS_OF_THE_WEEK = {"monday": 0, "tuesday": 1, "wednesday": 2, "thursday": 3, "friday": 4, "saturday": 5, "sunday": 6}
 TIME_PERIODS_IN_DAY = {0: "AM", 1: "PM"}
 def add_time(start, duration, day_of_week=None):
-
-    TRANSITION_TIME = "11:59"
-    HOURS_IN_DAY = 24
     number_of_days_later = 0
     period_transition = False
     new_time = ""
