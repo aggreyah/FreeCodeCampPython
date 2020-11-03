@@ -76,12 +76,10 @@ def get_expenditure(categories):
 
 
 def get_round_to_ten(value):
-    temp = value
-    if temp % TEN < FIVE:
-        temp = temp - (temp % TEN)
+    if value < TEN:
+        return 0
     else:
-        temp = temp + (TEN - (temp % TEN))
-    return temp
+        return value - (value % 10)
 
 
 def find_longest_category(categories):
